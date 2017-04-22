@@ -98,7 +98,7 @@ Custom property                  | Description                            | Defa
 
         background-color: #FFF;
 
-        @apply(--app-drawer-content-container);
+        @apply --app-drawer-content-container;
       }
 
       :host([persistent]) > #contentContainer {
@@ -166,10 +166,10 @@ Custom property                  | Description                            | Defa
       }
     </style>
 
-    <div id="scrim" on-tap="close"></div>
+    <div id="scrim" on-click="close"></div>
 
     <div id="contentContainer">
-      <content></content>
+      <slot></slot>
     </div>
   </template>
 
@@ -271,11 +271,7 @@ Custom property                  | Description                            | Defa
       _lastTabStop: null,
 
       attached: function() {
-        // Only transition the drawer after its first render (e.g. app-drawer-layout
-        // may need to set the initial opened state which should not be transitioned).
-        this._styleTransitionDuration(0);
         Polymer.RenderStatus.afterNextRender(this, function() {
-          this._styleTransitionDuration(this.transitionDuration);
           this._boundEscKeydownHandler = this._escKeydownHandler.bind(this);
           this.addEventListener('keydown', this._tabKeydownHandler.bind(this))
 
@@ -284,7 +280,7 @@ Custom property                  | Description                            | Defa
           this.setScrollDirection('y');
         });
 
-        this.fire('app-drawer-attached');
+        this.fire('app-reset-layout');
       },
 
       detached: function() {
@@ -319,16 +315,6 @@ Custom property                  | Description                            | Defa
        */
       getWidth: function() {
         return this.$.contentContainer.offsetWidth;
-      },
-
-      /**
-       * Resets the layout. The event fired is used by app-drawer-layout to position the
-       * content.
-       *
-       * @method resetLayout
-       */
-      resetLayout: function() {
-        this.fire('app-drawer-reset-layout');
       },
 
       _isRTL: function() {
@@ -579,6 +565,15 @@ Custom property                  | Description                            | Defa
         }
       },
 
+      /**
+       * Resets the layout.
+       *
+       * @method resetLayout
+       */
+      resetLayout: function() {
+        this.fire('app-reset-layout');
+      },
+
       _setKeyboardFocusTrap: function() {
         if (this.noFocusTrap) {
           return;
@@ -664,15 +659,9 @@ Custom property                  | Description                            | Defa
       }
 
       /**
-       * Fired when the layout of app-drawer is attached.
-       *
-       * @event app-drawer-attached
-       */
-
-      /**
        * Fired when the layout of app-drawer has changed.
        *
-       * @event app-drawer-reset-layout
+       * @event app-reset-layout
        */
 
       /**

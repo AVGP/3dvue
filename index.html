@@ -4,8 +4,7 @@
   <title>3D Vue</title>
   <meta name="viewport" content="width=device-width, initialScale=1.0">
 
-  <link rel="import" href="bower_components/app-layout/app-grid/app-grid-style.html">
-  <link rel="import" href="bower_components/gltf-viewer/gltf-viewer.html">
+  <link rel="import" href="app.html">
 
   <style>
     body {
@@ -13,113 +12,17 @@
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       margin: 0;
       padding: 0;
-      width: 95%;
+      width: 100vw;
       height: 100vh;
     }  
+
+     app-header {
+       background-color: aquamarine;
+    }
+
   </style>
 </head>
 <body>
-  <dom-module id="vue-app">
-    <template>
-      <style>
-        :host {
-          display: block;
-          text-align: left;
-        }
-
-        ul {
-          padding: 0;
-          list-style: none;
-        }
-
-        .item {
-          display: inline-block;
-          width: 30%;
-          min-height: 300px;
-          margin-right: 10px;
-          margin-bottom: 10px;
-          position: relative
-        }
-
-        gltf-viewer {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          overflow:hidden;
-        }
-
-        gltf-viewer:not([interactive]):before {
-          content: "";
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background:rgba(0,0,0,0.5);          
-        }
-
-        gltf-viewer:not([interactive]):after {
-          content: "Click me";
-          color: white;
-          text-align: center;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          transform:translateY(50%);
-        }
-
-        @media(max-width: 500px) {
-          .item {
-            width: 100%;
-          }
-        }        
-
-        @media(min-width:500px) and (max-width: 1200px) {
-          .item {
-            width: 45%;
-          }
-        }
-
-      </style>
-      <h1>3D Vue</h1>
-      <ul class="app-grid">
-        <li class="item" on-click="toggleViewer"><gltf-viewer src="duck/duck.gltf"></gltf-viewer></li>
-        <li class="item" on-click="toggleViewer"><gltf-viewer src="stahlhouse/export.gltf"></gltf-viewer></li>
-        <li class="item" on-click="toggleViewer"><gltf-viewer src="bridge_house/export.gltf"></gltf-viewer></li>
-        <li class="item" on-click="toggleViewer"><gltf-viewer src="the_office/export.gltf"></gltf-viewer></li>
-        <li class="item"><gltf-viewer src="big_bang_theory/export.gltf"></gltf-viewer></li>
-      </ul>
-<!--
-      <select value="{{model::change}}">
-        <option value="">Empty</option>
-        <option value="duck/duck.gltf">Duck</option>
-        <option value="stahlhouse/export.gltf">Stahl House</option>
-        <option value="bridge_house/export.gltf">Bridge house</option>
-        <option value="the_office/export.gltf">The Office</option>
-        <option value="big_bang_theory/export.gltf">Big Bang Theory</option>
-        <option value=""></option>
-      </select>
-      <gltf-viewer src="[[model]]"></gltf-viewer>-->
-    </template>
-    <script>
-      class VueApp extends Polymer.Element {
-        constructor() { super() }
-        static get is() { return 'vue-app' }
-
-        toggleViewer(evt) {
-          const viewer = evt.target
-          viewer.hasAttribute('interactive') ? viewer.removeAttribute('interactive') : viewer.setAttribute('interactive', 'interactive')
-        }
-      }
-
-      customElements.define('vue-app', VueApp)
-    </script>
-  </dom-module>
-
-  <vue-app></vue-app>
+  <vue-app></vue-app>      
 </body>
 </html>

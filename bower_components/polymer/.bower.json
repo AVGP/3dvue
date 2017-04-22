@@ -40,6 +40,6 @@
     "commit": "053ac15c09e0350424dc1caba1110102e6a4423a"
   },
   "_source": "https://github.com/Polymer/polymer.git",
-  "_target": "^2.0.0-rc.2",
-  "_originalSource": "Polymer/polymer"
+  "_target": "^2.0.0-rc.5",
+  "_originalSource": "polymer"
 }
