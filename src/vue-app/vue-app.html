@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<!--<link rel="import" href="../polymer/lib/elements/dom-if.html">-->
+<!--<link rel="import" href="../polymer/lib/elements/dom-repeat.html">-->
+
+<dom-module id="vue-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /** @polymerElement */
+    class VueApp extends Polymer.Element {
+      static get is() { return 'vue-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'vue-app'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(VueApp.is, VueApp);
+  </script>
+</dom-module>
