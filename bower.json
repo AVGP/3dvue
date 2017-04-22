@@ -1,0 +1,26 @@
+{
+  "name": "3dvue",
+  "authors": [
+    "Martin Splitt <mr.avgp@googlemail.com>"
+  ],
+  "description": "A web application to share 3D models on the web",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "https://avgp.github.io/3dvue",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.9.1",
+    "app-layout": "PolymerElements/app-layout#^1.0.1",
+    "paper-card": "PolymerElements/paper-card#^1.1.6",
+    "paper-fab": "PolymerElements/paper-fab#^1.2.2",
+    "platinum-sw": "PolymerElements/platinum-sw#^1.3.0",
+    "gltf-viewer": "AVGP/gltf-viewer#1.2.0"
+  }
+}
